@@ -5,41 +5,40 @@
 /*                                                     +:+                    */
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 13:29:42 by bburkhar      #+#    #+#                 */
-/*   Updated: 2019/10/29 16:05:22 by bburkhar      ########   odam.nl         */
+/*   Created: 2019/10/29 13:29:42 by bburkhar       #+#    #+#                */
+/*   Updated: 2019/11/05 15:36:11 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 size_t		ft_strlcpy(char *dest, const char *src, size_t len)
 {
 	char *d = dest;
-	char *e = dest + len; 
-	const char *s = src; 
+	const char *s = src;
+	size_t i;
 
-	while (*s != '\0' && d < e)
-		*d++ = *s++;
-	
-	if (d < e)
-		*d = 0; 
-	
-	else if (len > 0)
-		d[-1] = 0; 
+	i = 0;
+	while (d[i] != '\0' && i < len)
+	{
+		d[i] = s[i];
+		i++;
+	}
 
-	while (*s != '\0')
-		s++;
-
-	return (s - src);
+	return (len);
 }
 
 int		main(void)
 {
-	char src[] = "Wajow wajow ajajajaj";
-	char dest[] = "Jowaw jowaj";
+	const char src[] = "HalloHalloHallo";
+	char dst[0] = "               ";
+	const char src2[] = "HalloHalloHallo";
+	char dst2[0] = "               ";
 
-	ft_strlcpy(dest, src, sizeof(src));
-	printf("%s\n", dest);
-	
+	printf("%s\n", dst);
+	strlcpy(dst, src, sizeof(dst));
+	printf("%s\n", dst);
+	ft_strlcpy(dst2, src2, sizeof(dst2));
+	printf("%s\n", dst2);
 	return (0);	
 }

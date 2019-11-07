@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:44:42 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/05 16:01:46 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/07 07:39:00 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@ char    *ft_strchr(const char *s, int c)
     {
         if (ptr[i] == a)
             return (ptr + i);
-        if (ptr[i] == '\0')
-            return (0);
         ++i;
     }
+    if (ptr[i] == '\0' && a == '\0')
+        return (ptr + i);
+
     return (NULL);
 }
 
 int     main(void)
 {
-    const char str[] = "HalloHallo\0HalloHallo";
+    const char str[] = "HalloHalloHalloHallo";
     char a;
     char *ptr;
     char *ptr2;

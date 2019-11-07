@@ -6,7 +6,7 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 19:46:59 by bruno          #+#    #+#                */
-/*   Updated: 2019/11/06 19:47:13 by bruno         ########   odam.nl         */
+/*   Updated: 2019/11/06 21:54:35 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,20 @@ char    *ft_strrchr(const char *s, int c)
             return (ptr + len);
         --len;
     }
-    return (ptr + i);
+    if (ptr[i] == c)
+        return (ptr + i);
+    return (NULL);
 }
 
 
 int     main(void)
 {
-    char str[] = "Hallo%HalloZHallo";
+    char str[] = "HalloHalloZHallo";
     char *ptr;
     char *ptr2;
     char a;
 
-    a = '%'; 
+    a = 'B'; 
     printf("%s\n", str);
     ptr = strrchr(str, a);
     printf("%s\n", ptr);

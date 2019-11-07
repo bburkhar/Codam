@@ -6,7 +6,7 @@
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 14:23:01 by bburkhar      #+#    #+#                 */
-/*   Updated: 2019/10/29 16:21:54 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/10/30 12:33:35 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,44 @@
 
 size_t		ft_strlcat(char *dest, const char *src, size_t len)
 {
-	size_t  d; 
-	size_t  s;
-	size_t	diff; 
+	size_t	i;
+	size_t  j;
+	size_t 	rest;
 
-	d = 0;
-	while (dest[d] != '\0')
-			++d;
+	i = 0; 
+	while (dest[i] != '\0')
+			++i;
 
-	diff = 0; 
-	while (src[diff] != '\0')
-			++diff;
-	if (len <= d)
-		diff = diff + len;
+	j = 0;
+	while (src[j] != '\0')
+			j++;
+
+	if (len <= i)
+			j = len + j;
+
 	else
-		diff = diff + d;
-	
-	s = 0;
-	while (src[s] != '\0' && d + 1 < len)
+			j = j + i; 
+
+	i = 0; 
+	if (j < len)
 	{
-		dest[d] = src[s]; 
-		d++;
-		s++;
+		while (src[i] != '\0' && j < len)
+			dest[j] = src[i];
+			i++;
+			j++;
 	}
-	dest[d] = '\0';
-	return (diff);
+
+	return (j);
 }
 
 
 int		main(void)
 {
-	char src[] = "Wajowsdkjfkasjfkj";
-	char dest[] = "Jowaw";
+	char src[5] = "Hallo";
+	char dest[4] = "Geg";
 
 
-	ft_strlcat(dest, src, sizeof(src));
+	ft_strlcat(dest, src, sizeof(dest));
 	printf("%s\n", dest); 
 
 	return (0);

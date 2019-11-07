@@ -6,7 +6,7 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 19:46:59 by bruno          #+#    #+#                */
-/*   Updated: 2019/11/06 21:54:35 by bruno         ########   odam.nl         */
+/*   Updated: 2019/11/07 10:04:24 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int     main(void)
     char *ptr2;
     char a;
 
-    a = 'B'; 
+    a = '\0'; 
     printf("%s\n", str);
     ptr = strrchr(str, a);
     printf("%s\n", ptr);

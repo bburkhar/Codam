@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/14 14:53:51 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/14 23:43:32 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,59 +79,78 @@ char    **ft_split(const char *s, char c)
     int     *sizes;
     int     words;
     int     i;
-
+    int     x;
+    int     copy;
+    
+    i = 0;
+    x = 0;
+    copy = 0;
     words = ft_wordcount(s, c);
     new = malloc(sizeof(char *) * words);
     sizes = ft_sizes(s, c, words);
-    i  = 0;
     while (s[i] != '\0')
     {
-        new[x] = malloc(sizeof(char) * sizes[i])
-
+        if ((s[i] == c && s[i + 1] != c) || (s[0] != c))
+        {
+            i = i + 1;
+            new[x] = malloc(sizeof(char) * sizes[x]);
+            while (copy < sizes[x])
+            {
+                new[x][copy] = s[i];
+                ++copy;
+                ++i;
+            }
+            new[x][copy + 1] = '\0';
+            ++x;
+            copy = 0;
+        }
+        ++i;
     }
+    return (new);
 }
 
 int    main(void)
  {
-    char str[] = "         Hallo     Hallo     Hallo     Hallo     ";
+    char str[] = "HalloeeeeeeHalloeeeeeHalloeeeeeeeHallo     b";
     char **ptr;
     char a;
     int i;
     int c;
     int *test;
+    int x;
 
-    a = ' ';
-    test = ft_sizes(str, a, ft_wordcount(str, a));
+    a = 'e';
+    x = ft_wordcount(str, a);
+    test = ft_sizes(str, a, x);
     i = 0;
     c = 0;
 
-    while (c < ft_wordcount(str,a))
+    while (c < x)
     {
         printf("%d", test[c]);
         ++c;
     }
     printf("\n");
     c = 0;
-    printf("%d\n", ft_wordcount(str, a));
+    printf("%d\n", x);
     if (str[i] == c)
     {
         while (str[i] == c)
             ++i;
     }
-    //while (str[i] != '\0')
-    //{
-    //    if (str[i] == a && str[i - 1] != a)
-    //        ++c;
-    //    ++i;
-    //}
+    while (str[i] != '\0')
+    {
+        if (str[i] == a && str[i - 1] != a)
+            ++c;
+        ++i;
+    }
 
-    //i = 0;
-    //ptr = ft_split(str, a);
-    //while (i < ft_count(str, a))
-    //{    
-    //    printf("%s\n", ptr[i]);
-    //   ++i;
-    //}
+    i = 0;
+    ptr = ft_split(str, a);
+    while (i < x)
+    {    
+        printf("%s\n", ptr[i]);
+       ++i;
+    }
     return (0);
-
  }

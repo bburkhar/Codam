@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/08 18:13:06 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/13 17:10:47 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/14 11:41:37 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ char    **ft_split(const char *s, char c)
 
 int     main(void)
 {
-    char str[] = "    Hallo Hallo Hallo Hallo e ";
+    char str[] = "    Hallo Hallo Hallo Hallo e";
     char **ptr;
     char a;
     int i;
@@ -140,7 +140,7 @@ int     main(void)
     i = 0;
     c = 0;
 
-    while (c < ft_count(str,a))
+    while (c != ft_count(str,a))
     {
         printf("%d", test[c]);
         ++c;

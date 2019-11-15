@@ -5,149 +5,142 @@
 /*                                                     +:+                    */
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/08 18:13:06 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/14 11:41:37 by bburkhar      ########   odam.nl         */
+/*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
+/*   Updated: 2019/11/15 17:26:37 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_strlen(const char *str)
-{
-    int i; 
-
-    i = 0;
-    while (str[i] != '\0')
-        ++i;
-    return (i);
-}
-
-int     ft_count(const char *s, char c)
+int     ft_wordcount(const char *s, char c)
 {
     int i;
-    int a;
-    int x;
-    
+    int count; 
+
     i = 0;
-    a = 0;
-    x = ft_strlen(s);
+    count = 0;
     if (s[i] == c)
     {
         while (s[i] == c)
             ++i;
     }
-    if (s[x] == c)
-    {
-        while (s[x] == c)
-            --x;
-    }
-    while (i != x)
-    {
-        if (s[i] == c && s[i - 1] != c)
-            ++a;
-        ++i;
-    }
-    ++a;
-    return (a);
-}
-
-int     *ft_wordsizes(const char *s, char c, int j)
-{
-    int i;
-    int a;
-    int *wordsizes;
-    int last;
-    int x;
-
-    i = 0;
-    a = 0;
-    wordsizes = malloc(sizeof(int) * j);
-    if (s[i] == c)
-    {
-        while (s[i] == c)
-            ++i;
-    }
-    last = i;
     while (s[i] != '\0')
     {
-        if (s[i] == c || s[i + 1] == '\0')
-        {
-            while (s[i] == c)
-            {
-                ++i;
-                ++last;
-            }
-            if (s[i] != c && s[i + 1] == '\0')
-                last = last - 1;
-            wordsizes[a] =  i - last;
-            last = i;
-            ++a;
-        }
+        if ((s[i] == c && s[i - 1] != c) || (s[i] != c && s[i + 1] == '\0'))
+            ++count;
         ++i;
     }
-    return (wordsizes);
+    return (count);
+}
+
+int     *ft_sizes(const char *s, char c, int i)
+{
+    int a;
+    int count;
+    int index;
+    int last;
+    int *sizes;
+
+    index = 0;
+    a = 0;
+    sizes = malloc(sizeof(int) * i);
+    if (s[a] == c)
+    {
+        while (s[a] == c)
+            ++a;
+    }
+    last = a;
+    count = 0;
+    while (s[a] != '\0')
+    {
+        if ((s[a] == c && s[a - 1] != c) || (s[a] != c && s[a + 1] == '\0'))
+        {
+            if (s[a + 1] == '\0')
+            {
+                if (s[a + 1] == '\0' && s[a] == c)
+                    last = last + 1;
+                last = last - 1;
+            }
+            sizes[count] = a - last;
+            sizes[count] = sizes[count] + 1;
+            while (s[a + 1] == c)
+                    ++a;
+            if (s[a] == c && s[a + 1] != c)
+            {
+                last = a;
+                last = last + 1;
+                ++count;
+            }
+        }
+        ++a;
+    }
+    return (sizes);
 }
 
 char    **ft_split(const char *s, char c)
 {
-    char **new;
-    int *wordsizes;
-    unsigned int sizes;
-    int i;
-    int a;
-    int copy;
-    int j;
-    int x;
-
-    i = ft_count(s, c);
-    a = 0;
-    sizes = 0;
+    char    **new;
+    int     *sizes;
+    int     words;
+    int     i;
+    int     x;
+    int     copy;
+    
+    i = 0;
     x = 0;
-    new = malloc(sizeof(char *) * i);
-    wordsizes = ft_wordsizes(s, c, i);
-    while (a < i)
+    copy = 0;
+    words = ft_wordcount(s, c);
+    new = malloc(sizeof(char *) * words);
+    sizes = ft_sizes(s, c, words);
+    while (s[i] != '\0')
     {
-        new[a] = malloc(sizeof(char)* wordsizes[sizes] + 1);
-        copy = wordsizes[sizes];
-        j = 0;
-        while (copy > 0)
+        if ((s[i] == c && s[i + 1] != c) || (s[0] != c))
         {
-            while (s[x] == c)
-                ++x;
-            new[a][j] = s[x];
-            ++j;
-            --copy;
+            if (s[0] == c)
+                i = i + 1;
+            new[x] = malloc(sizeof(char) * sizes[x]);
+            while (copy < sizes[x] - 1)
+            {
+                while (s[i] == c)
+                    ++i;
+                if (s[i] != '\0')
+                    new[x][copy] = s[i];
+                ++copy;
+                ++i;
+            }
+            new[x][copy] = '\0';
             ++x;
+            copy = 0;
         }
-        new[a][j] = '\0';
-        ++a;
-        ++sizes;
+        ++i;
     }
     return (new);
 }
 
-int     main(void)
-{
-    char str[] = "    Hallo Hallo Hallo Hallo e";
+int    main(void)
+ {
+    char str[] = "Halloeeeehhalloeeeeehalllooooeeeeeeeeeeeeehallooooeeeeeeeeeeh  h ";
     char **ptr;
     char a;
     int i;
     int c;
     int *test;
+    int x;
 
-    a = ' ';
-    test = ft_wordsizes(str, a, ft_count(str, a));
+    a = 'e';
+    x = ft_wordcount(str, a);
+    test = ft_sizes(str, a, x);
     i = 0;
     c = 0;
 
-    while (c != ft_count(str,a))
+    while (c < x)
     {
         printf("%d", test[c]);
         ++c;
     }
     printf("\n");
     c = 0;
-    printf("%d\n", ft_count(str, a));
+    printf("%d\n", x);
     if (str[i] == c)
     {
         while (str[i] == c)
@@ -162,10 +155,10 @@ int     main(void)
 
     i = 0;
     ptr = ft_split(str, a);
-    while (i < ft_count(str, a))
+    while (i < x)
     {    
         printf("%s\n", ptr[i]);
-        ++i;
+       ++i;
     }
     return (0);
-}
+ }

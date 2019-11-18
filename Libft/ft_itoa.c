@@ -6,7 +6,7 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/15 17:58:19 by bruno          #+#    #+#                */
-/*   Updated: 2019/11/18 12:11:57 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/18 12:22:24 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int     main(void)
     int pr;
     char *hey;
 
-    a = -12345;
+    a = -43534512345;
     pr = ft_intcounter(a);
     hey = ft_itoa(a);
     printf("%d\n", pr);

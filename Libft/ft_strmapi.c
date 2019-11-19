@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 12:34:22 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/19 14:47:26 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/19 15:45:00 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,3 @@ int     main(void)
     printf("%s\n", new);
     return (0);
 }
-
-
-
-
-

@@ -6,23 +6,50 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 12:34:22 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/18 12:37:09 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/19 14:47:26 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void print()  
+char    ft_test(unsigned int index, char s)
 {
-    printf("Hello World!");
+    s = index + '0';
+    return (s);
 }
-void helloworld(void (*f)())  
+
+char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    f();
+    char *new;
+    int index;
+    int i;
+
+    i = 0;
+    while (s[i] != '\0')
+        ++i;
+    new = malloc(sizeof(char) * i + 1);
+    new[i] = '\0';
+    if (new == NULL)
+        return (NULL);
+    index = 0;
+    while (new[index] != '\0')
+    {
+        new[index] = f(index, s[index]);
+        ++index;
+    }
+    new[index] = '\0';
+    return (new);
 }
-int main(void)  
+
+int     main(void)  
 {
-    helloworld(print);
+    int i;
+    char *str = "123456";
+    char *new;
+    
+    i = 0;
+    new = ft_strmapi(str, ft_test);
+    printf("%s\n", new);
     return (0);
 }
 

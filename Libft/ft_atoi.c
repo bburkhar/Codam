@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 12:42:12 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/07 13:37:51 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:27:22 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,4 @@ int     ft_atoi(const char *str)
         ++i;
     }    
     return (result * negative);
-}
-
-int     main(void)
-{
-    int i;
-    char str[] = "     -9782  737";
-    char str2[] = "HalloHalloHallo";
-
-    i = ft_atoi(str);
-    printf("String : %s string value : %d\n", str, i);
-    i = ft_atoi(str2);
-    printf("String : %s string value : %d\n", str2, i);
-
-    i = atoi(str);
-    printf("String : %s string value : %d\n", str, i);
-    i = atoi(str2);
-    printf("String : %s string value : %d\n", str2, i);
-
-    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 13:45:20 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/07 14:29:34 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 14:13:29 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,4 @@ char    *ft_strdup(const char *s1)
     }
     dup[i] = '\0';
     return (dup);
-}
-
-int     main(void)
-{
-    char str[21] = "HalloHallo          ";
-    char *str2;
-    char *str3;
-
-    str3 = strdup(str);
-    str2 = ft_strdup(str);
-    printf("%s\n", str2);
-    printf("%s\n", str3);
-    return (0);
 }

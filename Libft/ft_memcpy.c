@@ -6,12 +6,11 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 13:43:41 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/05 14:26:18 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:31:42 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
 void    *ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -31,20 +30,4 @@ void    *ft_memcpy(void *dst, const void *src, size_t n)
         i++;
     }
     return (str1);
-}
-
-int     main(void)
-{   
-    const char src[] = "HalloHallo";
-    const char src2[] = "HalloHallo";
-    char dest[] = "HelloHal";
-    char dest2[] = "HelloHal";
-
-    memcpy(dest, src, 9);
-    printf("%s\n", dest);
-
-    ft_memcpy(dest2, src2, 9);
-    printf("%s\n", dest2);
-
-    return (0);
 }

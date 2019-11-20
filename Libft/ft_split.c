@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/15 17:26:37 by bruno         ########   odam.nl         */
+/*   Updated: 2019/11/20 14:16:05 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ char    **ft_split(const char *s, char c)
 
 int    main(void)
  {
-    char str[] = "Halloeeeehhalloeeeeehalllooooeeeeeeeeeeeeehallooooeeeeeeeeeeh  h ";
+    char str[] = "HalloeHalloe  eHalloee     ";
     char **ptr;
     char a;
     int i;
@@ -127,7 +127,7 @@ int    main(void)
     int *test;
     int x;
 
-    a = 'e';
+    a = '\0';
     x = ft_wordcount(str, a);
     test = ft_sizes(str, a, x);
     i = 0;

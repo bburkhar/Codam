@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 15:53:13 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/19 16:10:31 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:32:14 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,4 @@ void    ft_putstr_fd(char *s, int fd)
         write(fd, &s[i], 1);
         ++i;
     }
-}
-
-int     main(void)
-{
-    char *str = "HalloHalloHallo"; 
-
-    ft_putstr_fd(str, 2);
-    write(1, "\n", 1);
-    return (0);
 }

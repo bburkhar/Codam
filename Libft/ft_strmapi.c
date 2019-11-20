@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 12:34:22 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/19 15:45:00 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 14:14:03 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,4 @@ char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
     }
     new[index] = '\0';
     return (new);
-}
-
-int     main(void)  
-{
-    int i;
-    char *str = "123456";
-    char *new;
-    
-    i = 0;
-    new = ft_strmapi(str, ft_test);
-    printf("%s\n", new);
-    return (0);
 }

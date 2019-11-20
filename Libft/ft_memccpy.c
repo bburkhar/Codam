@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 13:56:42 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/05 14:32:00 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:29:44 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,3 @@ void    *ft_memccpy(void *restrict dst, const void *restrict src, int c, size_t 
     }
     return (str1);
 }
-
-int     main(void)
-{
-    char src[] = "This is a string!"; 
-    char dst[] = "This is a Z destination!";
-    char src2[] = "This is a string!"; 
-    char dst2[] = "This is a Z destination!";
-    char c; 
-
-    c = 'Z';
-    printf("String before memccpy : %s\n", dst); 
-    memccpy(dst, src, c, 17);
-    printf("String after memccpy : %s\n", dst);
-    printf("String before ft_memccpy : %s\n", dst2); 
-    ft_memccpy(dst2, src2, c, 17);
-    printf("String after ft_memccpy : %s\n", dst2);
-    return (0);
-}
-
-

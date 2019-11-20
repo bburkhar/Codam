@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 10:08:43 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/07 11:12:03 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 14:15:04 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,4 @@ char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
     }
    
     return (NULL);
-}
-
-int     main(void)
-{
-    const char hy[] = "HalloHallHIERoHalHallo";
-    const char nd[] = "HIER";
-    char *ptr;
-    char *ptr2;
-
-    ptr = strnstr(hy, nd, sizeof(hy));
-    printf("%s\n", ptr);
-    ptr2 = ft_strnstr(hy, nd, sizeof(hy));
-    printf("%s\n", ptr2);
-    return (0);
 }

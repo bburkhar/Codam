@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/08 14:26:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/08 14:42:52 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 14:13:37 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,3 @@ char    *ft_strjoin(char const *s1, char const *s2)
     }
     return (conc);
 }
-
-int     main(void)
-{
-    char str1[] = "Ham-";
-    char str2[] = "Kaastosti !!!";
-    char *ptr;
-
-    ptr = ft_strjoin(str1, str2);
-    printf("String 1 : %s\nString 2 : %s\nString 1 + 2 : %s\n", str1, str2, ptr);
-    return (0);
-}
-

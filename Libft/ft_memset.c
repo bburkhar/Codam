@@ -6,12 +6,11 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 11:36:28 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/05 13:48:23 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:31:42 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
 
 void    *ft_memset(void *b, int c, size_t len)
@@ -28,20 +27,4 @@ void    *ft_memset(void *b, int c, size_t len)
     }
         
     return (str);
-}
-
-int     main(void)
-{
-    int c;
-    char str[16] = "Appels en peren";
-    char str2[16] = "Appels en peren";
-
-    c = 1;
-    memset(str + 7, 'q', 2);
-    printf("%s\n", str);
-
-    ft_memset(str2 + 7, 'q', 2);
-    printf("%s\n", str2);
-
-    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 14:33:19 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/07 17:31:52 by bruno         ########   odam.nl         */
+/*   Updated: 2019/11/20 13:28:18 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,4 @@ void    *ft_calloc(size_t count, size_t size)
         ++c;
     }
     return (new);
-}
-
-
-int     main(void)
-{
-    char *arr; 
-
-    arr = (void *)ft_calloc(10, sizeof(int));
-    printf("%s\n", arr);
-    if (arr[40 * sizeof(int)] == '\0')
-        printf("Calloc succesvol\n");
-
-    return (0);
 }

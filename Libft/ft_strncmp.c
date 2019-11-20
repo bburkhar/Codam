@@ -29,35 +29,3 @@ int         ft_strncmp(const char *s1, const char *s2, size_t n)
       }
       return (0);
 }
-
-int     main(void)
-{
-    int a;
-    int b;
-    int c;
-    int d;
-    int e;
-    int f;
-    char str1[6] = "Abcdef";
-    char str2[6] = "abcdef";
-    char str3[6] = "abcdef";
-    char str4[6] = "abcDef";
-    char str5[6] = "abcdef";
-    char str6[6] = "abcdeF";
-
-    a = strncmp(str1, str2, 6);
-    b = ft_strncmp(str1, str2, 6);
-    c = strncmp(str3, str4, 4);
-    d = ft_strncmp(str3, str4, 4);
-    e = strncmp(str5, str6, 6);
-    f = ft_strncmp(str5, str6, 6);
-
-    printf("%d\n", a);
-    printf("%d\n", b);
-    printf("%d\n", c);
-    printf("%d\n", d);
-    printf("%d\n", e);
-    printf("%d\n", f);
-
-    return (0);
-}

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 14:23:01 by bburkhar      #+#    #+#                 */
-/*   Updated: 2019/10/30 12:33:35 by bburkhar      ########   odam.nl         */
+/*   Created: 2019/10/29 14:23:01 by bburkhar       #+#    #+#                */
+/*   Updated: 2019/11/20 14:13:44 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,4 @@ size_t		ft_strlcat(char *dest, const char *src, size_t len)
 	}
 
 	return (j);
-}
-
-
-int		main(void)
-{
-	char src[5] = "Hallo";
-	char dest[4] = "Geg";
-
-
-	ft_strlcat(dest, src, sizeof(dest));
-	printf("%s\n", dest); 
-
-	return (0);
 }

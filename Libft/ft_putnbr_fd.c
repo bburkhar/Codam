@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 16:20:06 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/19 17:41:31 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:32:03 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,4 @@ void    ft_putnbr_fd(int n, int fd)
         ft_putnbr_fd(n / 10, fd);
     c = n % 10 + 48;
     write(fd, &c, 1);
-}
-
-int     main(void)
-{
-    int print;
-
-    print = -100100;
-    ft_putnbr_fd(print, 1);
-    write(1, "\n", 1);
-    return (0);
 }

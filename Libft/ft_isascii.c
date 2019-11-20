@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 12:16:05 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/07 12:30:10 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:28:58 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,4 @@ int     ft_isascii(int c)
         return (1);
     else
         return (0);
-}
-
-int     main(void)
-{
-    unsigned char a; 
-    int i;
-    int j;
-
-    a = '\0';
-    i = isascii(a);
-    j = ft_isascii(a);
-    printf("%d  %d\n", i, j);
-    return (0);
 }

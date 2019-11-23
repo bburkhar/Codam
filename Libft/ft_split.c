@@ -6,11 +6,21 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/20 14:16:05 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/23 15:42:30 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int     ft_strlen(const char *s)
+{
+    int index;
+
+    index = 0; 
+    while(s[index] != '\0')
+        ++index;
+    return (index);
+}
 
 int     ft_wordcount(const char *s, char c)
 {
@@ -37,11 +47,9 @@ int     *ft_sizes(const char *s, char c, int i)
 {
     int a;
     int count;
-    int index;
     int last;
     int *sizes;
 
-    index = 0;
     a = 0;
     sizes = malloc(sizeof(int) * i);
     if (s[a] == c)
@@ -62,7 +70,7 @@ int     *ft_sizes(const char *s, char c, int i)
                 last = last - 1;
             }
             sizes[count] = a - last;
-            sizes[count] = sizes[count] + 1;
+                sizes[count] = sizes[count] + 1;
             while (s[a + 1] == c)
                     ++a;
             if (s[a] == c && s[a + 1] != c)
@@ -85,12 +93,16 @@ char    **ft_split(const char *s, char c)
     int     i;
     int     x;
     int     copy;
+    int     strlen;
     
     i = 0;
     x = 0;
     copy = 0;
+    strlen = ft_strlen(s);
     words = ft_wordcount(s, c);
-    new = malloc(sizeof(char *) * words);
+    new = malloc(sizeof(char *) * words + 1);
+    if (new == NULL)
+        return (NULL);
     sizes = ft_sizes(s, c, words);
     while (s[i] != '\0')
     {
@@ -109,7 +121,11 @@ char    **ft_split(const char *s, char c)
                 ++i;
             }
             new[x][copy] = '\0';
+            if (s[strlen - 1] != c && 1 + x == words)
+                return (new);
             ++x;
+            if (x == words)
+                new[x] = NULL;
             copy = 0;
         }
         ++i;
@@ -119,15 +135,15 @@ char    **ft_split(const char *s, char c)
 
 int    main(void)
  {
-    char str[] = "HalloeHalloe  eHalloee     ";
+    char str[] = "Halloe1234eedd  ";
     char **ptr;
     char a;
+    int *test;
     int i;
     int c;
-    int *test;
     int x;
 
-    a = '\0';
+    a = 'e';
     x = ft_wordcount(str, a);
     test = ft_sizes(str, a, x);
     i = 0;

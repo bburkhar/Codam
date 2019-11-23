@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/23 15:42:30 by bruno         ########   odam.nl         */
+/*   Updated: 2019/11/23 15:54:05 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int     ft_strlen(const char *s)
 {
     int index;
 
-    index = 0; 
+    index = 0;
     while(s[index] != '\0')
         ++index;
     return (index);
@@ -25,7 +25,7 @@ int     ft_strlen(const char *s)
 int     ft_wordcount(const char *s, char c)
 {
     int i;
-    int count; 
+    int count;
 
     i = 0;
     count = 0;

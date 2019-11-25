@@ -6,7 +6,7 @@
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 14:23:01 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/20 14:13:44 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/25 11:24:06 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ size_t		ft_strlcat(char *dest, const char *src, size_t len)
 {
 	size_t	i;
 	size_t  j;
-	size_t 	rest;
 
 	i = 0; 
 	while (dest[i] != '\0')

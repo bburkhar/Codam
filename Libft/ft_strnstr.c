@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 10:08:43 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/20 14:15:04 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/25 11:24:52 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
     char *hs;
     char *nd;
-    int i;
+    size_t i;
     size_t j;
     size_t ret;
     size_t count;

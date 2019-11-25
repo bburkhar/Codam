@@ -6,13 +6,13 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/23 15:54:05 by bruno         ########   odam.nl         */
+/*   Updated: 2019/11/25 11:31:17 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_strlen(const char *s)
+int     ft_count(const char *s)
 {
     int index;
 
@@ -98,7 +98,7 @@ char    **ft_split(const char *s, char c)
     i = 0;
     x = 0;
     copy = 0;
-    strlen = ft_strlen(s);
+    strlen = ft_count(s);
     words = ft_wordcount(s, c);
     new = malloc(sizeof(char *) * words + 1);
     if (new == NULL)
@@ -132,49 +132,3 @@ char    **ft_split(const char *s, char c)
     }
     return (new);
 }
-
-int    main(void)
- {
-    char str[] = "Halloe1234eedd  ";
-    char **ptr;
-    char a;
-    int *test;
-    int i;
-    int c;
-    int x;
-
-    a = 'e';
-    x = ft_wordcount(str, a);
-    test = ft_sizes(str, a, x);
-    i = 0;
-    c = 0;
-
-    while (c < x)
-    {
-        printf("%d", test[c]);
-        ++c;
-    }
-    printf("\n");
-    c = 0;
-    printf("%d\n", x);
-    if (str[i] == c)
-    {
-        while (str[i] == c)
-            ++i;
-    }
-    while (str[i] != '\0')
-    {
-        if (str[i] == a && str[i - 1] != a)
-            ++c;
-        ++i;
-    }
-
-    i = 0;
-    ptr = ft_split(str, a);
-    while (i < x)
-    {    
-        printf("%s\n", ptr[i]);
-       ++i;
-    }
-    return (0);
- }

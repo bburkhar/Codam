@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 13:56:42 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/26 12:53:09 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/29 10:51:04 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    *ft_memccpy(void *restrict dst, const void *restrict src, int c, size_t 
     {
         str1[i] = str2[i];
         if (str1[i] == (unsigned char) c)
-            return ((void *) dst + i + 1);
+            return ((void *)(dst + i + 1));
         ++i;
     }
     return (NULL);

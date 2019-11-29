@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 12:42:12 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/25 11:23:05 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/29 11:56:19 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int   ft_atoi(const char *str)
         i++;
     while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
     {
-        result = result * 10 + (str[i] - 48);
+        result = (result * 10) + (str[i] - '0');
         ++i;
     }
     return (result * negative);

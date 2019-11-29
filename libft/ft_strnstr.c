@@ -6,50 +6,38 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 10:08:43 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/25 11:24:52 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/29 11:48:21 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
+size_t     ft_needlecount(const char *ptr)
 {
-    char *hs;
-    char *nd;
     size_t i;
-    size_t j;
-    size_t ret;
-    size_t count;
-    
-    hs = (char *) haystack;
-    nd = (char *) needle;
-    i = 0;   
-    j = 0;
-    ret = 0; 
-    count = 0;
-    while (nd[count] != '\0')
-        ++count; 
-    
-    if (nd[i] == '\0')
-       return (hs + ret);
 
-    count = count - 1;
-    while (j < len)
-    {
-        if (hs[j] == nd[i])
-        {
-            while (hs[j] == nd[i])
-            {    
-                ++i;
-                ++j;
-            if (count == i)
-                return (hs + ret);
-            }
+    i = 0;
+    while (ptr[i] != '\0')
+        ++i;
+    return (i);
+}
 
-        }
-        ++j;
-        ++ret;
-    }
-   
-    return (NULL);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t q;
+	size_t w;
+
+	q = 0;
+	if (*needle == 0)
+		return ((char*)haystack);
+    w = 0;
+	while (haystack[q] != 0 && q < len)
+	{
+		while (haystack[q + w] == needle[w] && needle[w] != 0 && w + q < len)
+			w++;
+		if (w == ft_needlecount(needle))
+			return ((char *)&haystack[q]);
+		q++;
+	}
+	return (NULL);
 }

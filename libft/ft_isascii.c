@@ -6,16 +6,16 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 12:16:05 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/20 13:28:58 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/29 15:58:31 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_isascii(int c)
+int		ft_isascii(int c)
 {
-    if (c >= 0 && c <= 127)
-        return (1);
-    else
-        return (0);
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
+		return (0);
 }

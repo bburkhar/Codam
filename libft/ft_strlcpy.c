@@ -6,7 +6,7 @@
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 13:29:42 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/29 11:33:41 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/29 15:09:38 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int		ft_strcount(const char *str)
 	return (i);
 }
 
-size_t		ft_strlcpy(char *dest, const char *src, size_t len)
+size_t	ft_strlcpy(char *dest, const char *src, size_t len)
 {
-	int ret;
-	unsigned int i;
+	int				ret;
+	unsigned int	i;
 
 	ret = ft_strcount(src);
 	if (dest == NULL || src == NULL)

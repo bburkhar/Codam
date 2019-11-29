@@ -6,18 +6,16 @@
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 12:36:43 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/20 13:29:20 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/29 15:59:38 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c) 	
+int		ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
-		return (1); 
-
+		return (1);
 	else
-
-	return (0);
+		return (0);
 }

@@ -6,42 +6,39 @@
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 14:23:01 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/27 15:09:39 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/25 11:24:06 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int		ft_strtel(const char *str)
-{
-	int i;
-
-	i = 0;
-	while(str[i] != '\0')
-		++i;
-	return (i);
-}
-
 size_t		ft_strlcat(char *dest, const char *src, size_t len)
 {
 	size_t	i;
 	size_t  j;
-	size_t 	size_dest;
-	size_t 	size_src;
 
-	size_dest = ft_strtel(dest);
-	size_src = ft_strtel(src);
-	if (len <= size_dest)
-		return (size_src + len);
+	i = 0; 
+	while (dest[i] != '\0')
+			++i;
 
-	j = size_dest;
-	i = 0;		
-	while (src[i] != '\0' && j < len - 1)
-	{		
-		dest[j] = src[i];
-		i++;
-		j++;
+	j = 0;
+	while (src[j] != '\0')
+			j++;
+
+	if (len <= i)
+			j = len + j;
+
+	else
+			j = j + i; 
+
+	i = 0; 
+	if (j < len)
+	{
+		while (src[i] != '\0' && j < len)
+			dest[j] = src[i];
+			i++;
+			j++;
 	}
-	dest[j] = '\0';
-	return (size_dest + size_src);
+
+	return (j);
 }

@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/08 15:04:02 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/27 16:38:02 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 14:15:19 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ char    *ft_strtrim(char const *s1, char const *s2)
         ++i;
     }
     new = malloc(sizeof(char) * (((len - j) + 2)));
-    if (new == NULL)
-        return (NULL);
     a = 0;
     b = len - j + 1;
     while (a < b)

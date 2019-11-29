@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 14:33:19 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/27 14:51:09 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:28:18 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ void    *ft_calloc(size_t count, size_t size)
         return (NULL);
 
     new = malloc((size * count) + 1);
+
     if (new == NULL)
         return (NULL);
 
     c = 0;
     while (c <= count * size)
-    {
+    {    
         new[c] = '\0';
         ++c;
     }

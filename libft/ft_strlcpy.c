@@ -6,38 +6,24 @@
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 13:29:42 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/27 14:46:33 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/20 14:13:50 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_strcount(const char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-		++i;
-	return (i);
-}
-
 size_t		ft_strlcpy(char *dest, const char *src, size_t len)
 {
-	int ret;
-	unsigned int i;
+	char *d = dest;
+	const char *s = src;
+	size_t i;
 
-	ret = ft_strcount(src);
-	if (dest == NULL || src == NULL)
-		return (0);
-	if (len == 0)
-		return (ret);
 	i = 0;
-	while (i < len - 1 && src[i] != '\0')
+	while (d[i] != '\0' && i < len)
 	{
-		dest[i] = src[i];
+		d[i] = s[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (ret);
+
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/08 15:04:02 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/29 18:06:28 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/11/30 15:03:47 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_tel(char const *str)
 	int i;
 
 	i = 0;
-	while (str != '\0')
+	while (str[i] != '\0')
 		++i;
 	return (i);
 }
@@ -25,21 +25,21 @@ int		ft_tel(char const *str)
 int		ft_end(char const *s1, char const *s2, int len)
 {
 	int i;
-	int ret;
 
-	ret = len;
-	while (len > 0)
+	i = 0;
+	len = len - 1;
+	while (s2[i] != '\0')
 	{
-		i = 0;
-		while (s2[i] != '\0')
+		if (len == -1)
+			return (0);
+		if (s1[len] == s2[i])
 		{
-			if (s1[len] == s2[i])
-				--ret;
-			++i;
+			--len;
+			i = -1;
 		}
-		--len;
+		++i;
 	}
-	return (ret);
+	return (len);
 }
 
 char	*ft_strmaker(char const *s1, int end, int start)
@@ -48,15 +48,18 @@ char	*ft_strmaker(char const *s1, int end, int start)
 	int		size;
 	int		i;
 
-	size = end - start;
+	size = end - start + 1;
+	if (end == 0 && start == 0)
+		size = -1;
 	new = (char *)malloc(sizeof(char) * size + 1);
 	if (new == NULL)
 		return (NULL);
 	i = 0;
-	while (i < end)
+	while (i < size)
 	{
 		new[i] = s1[start];
 		++i;
+		++start;
 	}
 	new[i] = '\0';
 	return (new);
@@ -67,23 +70,22 @@ char	*ft_strtrim(char const *s1, char const *s2)
 	char	*new;
 	int		start;
 	int		i;
-	int		j;
 	int		end;
 
 	start = 0;
 	i = 0;
 	end = ft_end(s1, s2, ft_tel(s1));
-	while (s1[i] != '\0')
+	while (s2[i] != '\0')
 	{
-		j = 0;
-		while (s2[j] != '\0')
+		if (s1[start] == s2[i])
 		{
-			if (s1[i] == s2[j])
-				++start;
-			++j;
+			++start;
+			i = -1;
 		}
 		++i;
 	}
+	if (s1[start] == '\0')
+		start = 0;
 	new = ft_strmaker(s1, end, start);
 	return (new);
 }

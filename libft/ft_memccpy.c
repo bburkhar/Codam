@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 13:56:42 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/29 15:13:51 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/01 21:02:32 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	while (i < n)
 	{
 		str1[i] = str2[i];
-		if (str1[i] == (unsigned char)c)
+		if (str1[i] == a)
 			return ((void *)(dst + i + 1));
 		++i;
 	}

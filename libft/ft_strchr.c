@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:44:42 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/30 15:38:18 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/02 15:21:44 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (ptr[i] == '\0' && a == '\0')
 		return (ptr + i);
-
 	return (NULL);
 }

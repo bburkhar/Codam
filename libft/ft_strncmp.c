@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 15:16:53 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/01 21:36:59 by bruno         ########   odam.nl         */
+/*   Updated: 2019/12/02 15:27:58 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	if (n == 0)
 		return (0);
-
 	i = 0;
 	while (i < n)
 	{

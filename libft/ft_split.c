@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/02 15:14:31 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/03 15:53:15 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,41 @@ int		ft_wordcount(const char *s, char c)
 	return (count);
 }
 
+void	ft_sizefiller(const char *s, char c, int *sizes, int a)
+{
+	int count;
+	int last;
+
+	last = a;
+	count = 0;
+	while (s[a] != '\0')
+	{
+		if ((s[a] == c && s[a - 1] != c) || (s[a] != c && s[a + 1] == '\0'))
+		{
+			if (s[a + 1] == '\0' && s[a] == c)
+				last = last + 1;
+			if (s[a + 1] == '\0')
+				last = last - 1;
+			sizes[count] = a - last + 1;
+			while (s[a + 1] == c)
+				++a;
+			if (s[a] == c && s[a + 1] != c)
+			{
+				last = a + 1;
+				++count;
+			}
+		}
+		++a;
+	}
+}
+
 int		*ft_sizes(const char *s, char c, int i)
 {
 	int a;
-	int count;
-	int last;
 	int *sizes;
+	int k;
 
+	k = ft_wordcount(s, c);
 	a = 0;
 	sizes = malloc(sizeof(int) * i);
 	if (s[a] == c)
@@ -48,74 +76,58 @@ int		*ft_sizes(const char *s, char c, int i)
 		while (s[a] == c)
 			++a;
 	}
-	last = a;
-	count = 0;
-	while (s[a] != '\0')
-	{
-		if ((s[a] == c && s[a - 1] != c) || (s[a] != c && s[a + 1] == '\0'))
-		{
-			if (s[a + 1] == '\0')
-			{
-				if (s[a + 1] == '\0' && s[a] == c)
-					last = last + 1;
-				last = last - 1;
-			}
-			sizes[count] = a - last;
-			sizes[count] = sizes[count] + 1;
-			while (s[a + 1] == c)
-				++a;
-			if (s[a] == c && s[a + 1] != c)
-			{
-				last = a;
-				last = last + 1;
-				++count;
-			}
-		}
-		++a;
-	}
+	ft_sizefiller(s, c, sizes, a);
+	sizes[k - 1] = 0;
 	return (sizes);
 }
 
-char    **ft_split(const char *s, char c)
+void	ft_wordfiller(int *sizes, const char *s, char c, char **new)
 {
-    char    **new;
-    int     *sizes;
-    int     words;
-    int     i;
-    int     x;
-    int     copy;
-    int     j;
-	int 	size;
-    
-    i = 0;
-    x = 0;
+	int j;
+	int copy;
+	int i;
+	int words;
+
 	j = 0;
-    words = ft_wordcount(s, c);
-    new = malloc(sizeof(char *) * words);
-    if (new == NULL)
-        return (NULL);
-    sizes = ft_sizes(s, c, words);
-	while (s[j] == c)
-		++j;
-    while (i < words - 1)
-    {
-		new[i] = malloc(sizeof(char) * sizes[x]);
+	words = ft_wordcount(s, c);
+	i = 0;
+	while (i < words - 1)
+	{
 		copy = 0;
-		size = sizes[x] - 1;
-		while (size > 0)
+		sizes[i] = sizes[i] - 1;
+		while (sizes[i] > 0)
 		{
 			while (s[j] == c)
 				++j;
 			new[i][copy] = s[j];
 			++copy;
 			++j;
-			--size;
+			--sizes[i];
 		}
-		size = sizes[x] - 1;
-		new[i][size] = '\0';
-		++x;
+		new[i][copy] = '\0';
 		++i;
 	}
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**new;
+	int		*sizes;
+	int		words;
+	int		i;
+
+	i = 0;
+	words = ft_wordcount(s, c);
+	new = malloc(sizeof(char *) * words);
+	if (new == NULL)
+		return (NULL);
+	sizes = ft_sizes(s, c, words);
+	while (i < words - 1)
+	{
+		new[i] = malloc(sizeof(char) * sizes[i]);
+		++i;
+	}
+	ft_wordfiller(sizes, s, c, new);
 	new[words - 1] = NULL;
-    return (new);
+	return (new);
 }

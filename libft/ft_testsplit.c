@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_split.c                                         :+:    :+:            */
+/*   ft_testsplit.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/02 16:32:53 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/03 11:17:08 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		ft_charskip(const char *s, char c, int j)
-{
-	while (s[j] == c)
-		++j;
-	return (j);
-}
 
 int		ft_wordcount(const char *s, char c)
 {
@@ -48,10 +41,13 @@ int		*ft_sizes(const char *s, char c, int i)
 	int last;
 	int *sizes;
 
-	sizes = malloc(sizeof(int) * i);
 	a = 0;
+	sizes = malloc(sizeof(int) * i);
 	if (s[a] == c)
-		a = ft_charskip(s, c, 0);
+	{
+		while (s[a] == c)
+			++a;
+	}
 	last = a;
 	count = 0;
 	while (s[a] != '\0')
@@ -80,46 +76,94 @@ int		*ft_sizes(const char *s, char c, int i)
 	return (sizes);
 }
 
-void	ft_filler(char **new, const char *s, char c, int *sizes)
+void	ft_wordfiller(int *sizes, const char *s, char c, char **new)
 {
 	int j;
 	int copy;
-	int x;
+	int i;
 	int words;
 
-	x = 0;
-	copy = 0;
+	j = 0;
 	words = ft_wordcount(s, c);
-	j = ft_charskip(s, c, 0);
-	while (x < words - 1)
-	{
-		new[x] = malloc(sizeof(char) * sizes[x]);
+	i = 0;
+	while (i < words - 1)
+    {
 		copy = 0;
-		while (copy < sizes[x])
+		while (sizes[i] - 1 > 0)
 		{
-			j = ft_charskip(s, c, j);
-			new[x][copy] = s[j];
+			while (s[j] == c)
+				++j;
+			new[i][copy] = s[j];
 			++copy;
 			++j;
+			--sizes[i] - 1;
 		}
-		copy = sizes[x] - 1;
-		new[x][copy] = '\0';
-		++x;
+		new[i][copy + 1] = '\0';
+		++i;
 	}
-	new[words - 1] = NULL;
 }
 
-char	**ft_split(const char *s, char c)
+char    **ft_split(const char *s, char c)
 {
-	char	**new;
-	int		*sizes;
-	int		words;
+    char    **new;
+    int     *sizes;
+    int     words;
+    int     i;
+    
+    i = 0;
+    words = ft_wordcount(s, c);
+    new = malloc(sizeof(char *) * words);
+    if (new == NULL)
+        return (NULL);
+    sizes = ft_sizes(s, c, words);
+	while (i < words - 1)
+	{
+		new[i] = malloc(sizeof(char) * sizes[i]);
+		++i;
+	}
+	ft_wordfiller(sizes, s, c, new);
+	new[words - 1] = NULL;
+    return (new);
+}
 
-	words = ft_wordcount(s, c);
-	new = malloc(sizeof(char *) * words);
-	if (new == NULL)
-		return (NULL);
-	sizes = ft_sizes(s, c, words);
-	ft_filler(new, s, c, sizes);
-	return (new);
+
+static void            ft_print_result(char const *s)
+{
+    int        len;
+
+    len = 0;
+    while (s[len])
+        len++;
+    write(1, s, len);
+}
+
+static void            ft_print_tabstr(char **tabstr)
+{
+    int        i;
+
+    i = 0;
+    while (tabstr[i] != '\0')
+    {
+        ft_print_result(tabstr[i]);
+        write(1, "\n", 1);
+        free(tabstr[i]);
+        i++;
+    }
+    free(tabstr);
+}
+
+static void            check_split(char *s, char c)
+{
+    char    **tabstr;
+
+    if (!(tabstr = ft_split(s, c)))
+        ft_print_result("NULL");
+    else
+        ft_print_tabstr(tabstr);
+}
+
+int main(void) 
+{
+  check_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+  return (0);
 }

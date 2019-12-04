@@ -6,13 +6,13 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 12:42:12 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/29 15:49:55 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/04 18:27:26 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_start(const char *str)
+static int	ft_start(const char *str)
 {
 	int i;
 	int negative;
@@ -29,7 +29,7 @@ int		ft_start(const char *str)
 	return (i * negative);
 }
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int i;
 	int result;

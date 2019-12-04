@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 16:20:06 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/04 12:42:50 by bruno         ########   odam.nl         */
+/*   Updated: 2019/12/04 17:24:28 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, "-", 1);
 		negative = -1;
 	}
-	i = (unsigned int )(n * negative);
+	i = (unsigned int)(n * negative);
 	if (i >= 10)
 		ft_putnbr_fd(i / 10, fd);
 	c = i % 10 + 48;

@@ -6,18 +6,30 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 17:53:13 by bruno          #+#    #+#                */
-/*   Updated: 2019/12/04 15:26:06 by bruno         ########   odam.nl         */
+/*   Updated: 2019/12/04 18:36:32 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static int		count(char const *s)
 {
-	char	*new;
-	size_t	i;
+	int i;
 
-	if (len == 0)
+	i = 0;
+	while (s[i] != '\0')
+		++i;
+	return (i);
+}
+
+char			*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char			*new;
+	size_t			i;
+	unsigned int	a;
+
+	a = count(s);
+	if (len == 0 || a < start)
 	{
 		new = (char*)malloc(sizeof(char) * 1);
 		new[0] = '\0';

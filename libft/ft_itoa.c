@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   tijdelijk.c                                        :+:    :+:            */
+/*   ft_itoa.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/15 17:58:19 by bruno          #+#    #+#                */
-/*   Updated: 2019/12/04 11:04:42 by bruno         ########   odam.nl         */
+/*   Updated: 2019/12/04 18:27:52 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_intcounter(int a)
+static int		ft_intcounter(int a)
 {
 	int ret;
 	int negative;
@@ -37,7 +37,7 @@ int		ft_intcounter(int a)
 	return (ret + negative);
 }
 
-void	ft_filler(char *new, int j, int n)
+static void		ft_filler(char *new, int j, int n)
 {
 	int i;
 
@@ -65,7 +65,7 @@ void	ft_filler(char *new, int j, int n)
 	}
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char	*new;
 	int		i;

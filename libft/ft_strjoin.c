@@ -6,13 +6,13 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/08 14:26:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/04 15:59:13 by bruno         ########   odam.nl         */
+/*   Updated: 2019/12/04 18:28:33 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_teller(char const *str)
+static int		ft_teller(char const *str)
 {
 	int i;
 
@@ -22,24 +22,14 @@ int		ft_teller(char const *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static void		filler(char const *s1, char const *s2, char *conc)
 {
-	int		i;
-	int		j;
-	int		print;
-	char	*conc;
+	int print;
+	int i;
+	int j;
 
 	i = ft_teller(s1);
 	j = ft_teller(s2);
-	if (i == 0 && j == 0)
-	{
-		conc = malloc(sizeof(char) * 1);
-		conc[0] = '\0';
-		return (conc);
-	}
-	conc = malloc(sizeof(char) * (i + j) + 1);
-	if (conc == NULL)
-		return (NULL);
 	print = 0;
 	while (print <= (i - 1))
 	{
@@ -53,5 +43,25 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		++print;
 		++i;
 	}
+}
+
+char			*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*conc;
+
+	i = ft_teller(s1);
+	j = ft_teller(s2);
+	if (i == 0 && j == 0)
+	{
+		conc = malloc(sizeof(char) * 1);
+		conc[0] = '\0';
+		return (conc);
+	}
+	conc = malloc(sizeof(char) * (i + j) + 1);
+	if (conc == NULL)
+		return (NULL);
+	filler(s1, s2, conc);
 	return (conc);
 }

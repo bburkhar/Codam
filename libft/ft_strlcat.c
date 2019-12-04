@@ -6,13 +6,13 @@
 /*   By: bburkhar <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 14:23:01 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/03 17:43:57 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/04 18:28:42 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_strtel(const char *str)
+static int	ft_strtel(const char *str)
 {
 	int i;
 

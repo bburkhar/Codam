@@ -6,13 +6,13 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/08 15:04:02 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/11/30 15:03:47 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/04 18:36:23 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tel(char const *str)
+static int		ft_tel(char const *str)
 {
 	int i;
 
@@ -22,7 +22,7 @@ int		ft_tel(char const *str)
 	return (i);
 }
 
-int		ft_end(char const *s1, char const *s2, int len)
+static int		ft_end(char const *s1, char const *s2, int len)
 {
 	int i;
 
@@ -42,7 +42,7 @@ int		ft_end(char const *s1, char const *s2, int len)
 	return (len);
 }
 
-char	*ft_strmaker(char const *s1, int end, int start)
+static char		*ft_strmaker(char const *s1, int end, int start)
 {
 	char	*new;
 	int		size;
@@ -65,7 +65,7 @@ char	*ft_strmaker(char const *s1, int end, int start)
 	return (new);
 }
 
-char	*ft_strtrim(char const *s1, char const *s2)
+char			*ft_strtrim(char const *s1, char const *s2)
 {
 	char	*new;
 	int		start;

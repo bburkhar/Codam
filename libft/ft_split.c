@@ -6,13 +6,13 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:39:57 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/03 15:53:15 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/04 18:28:13 by bburkhar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_wordcount(const char *s, char c)
+static int		ft_wordcount(const char *s, char c)
 {
 	int i;
 	int count;
@@ -34,7 +34,7 @@ int		ft_wordcount(const char *s, char c)
 	return (count);
 }
 
-void	ft_sizefiller(const char *s, char c, int *sizes, int a)
+static void		ft_sizefiller(const char *s, char c, int *sizes, int a)
 {
 	int count;
 	int last;
@@ -62,7 +62,7 @@ void	ft_sizefiller(const char *s, char c, int *sizes, int a)
 	}
 }
 
-int		*ft_sizes(const char *s, char c, int i)
+static int		*ft_sizes(const char *s, char c, int i)
 {
 	int a;
 	int *sizes;
@@ -81,7 +81,7 @@ int		*ft_sizes(const char *s, char c, int i)
 	return (sizes);
 }
 
-void	ft_wordfiller(int *sizes, const char *s, char c, char **new)
+static void		ft_wordfiller(int *sizes, const char *s, char c, char **new)
 {
 	int j;
 	int copy;
@@ -109,7 +109,7 @@ void	ft_wordfiller(int *sizes, const char *s, char c, char **new)
 	}
 }
 
-char	**ft_split(const char *s, char c)
+char			**ft_split(const char *s, char c)
 {
 	char	**new;
 	int		*sizes;

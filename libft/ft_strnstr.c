@@ -6,7 +6,7 @@
 /*   By: bburkhar <bburkhar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 10:08:43 by bburkhar       #+#    #+#                */
-/*   Updated: 2019/12/02 15:23:52 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/04 15:10:21 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	while (haystack[q] != 0 && q < len)
 	{
 		while (haystack[q + w] == needle[w] && needle[w] != 0 && w + q < len)
-			w++;
+			++w;
 		if (w == ft_needlecount(needle))
-			return ((char *)&haystack[q]);
+		{
+			while (haystack[q + w - 1] == needle[w - 1] && w != 0)
+				--w;
+			if (w == 0)
+				return ((char *)&haystack[q]);
+		}
 		q++;
 	}
 	return (NULL);

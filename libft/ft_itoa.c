@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
+/*   tijdelijk.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/15 17:58:19 by bruno          #+#    #+#                */
-/*   Updated: 2019/12/03 19:26:47 by bburkhar      ########   odam.nl         */
+/*   Updated: 2019/12/04 11:04:42 by bruno         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_intcounter(int a)
 
 	negative = 0;
 	ret = 0;
+	if (a == -2147483648)
+		return (11);
 	if (a < 0)
 	{
 		negative = 1;
@@ -49,6 +51,12 @@ void	ft_filler(char *new, int j, int n)
 		i = 1;
 		n = n * -1;
 	}
+	if (n == -2147483648)
+	{
+		new[j] = '8';
+		j = j - 1;
+		n = 214748364;
+	}
 	while (j >= i)
 	{
 		new[j] = (char)(n % 10) + '0';
@@ -77,19 +85,4 @@ char	*ft_itoa(int n)
 		return (NULL);
 	ft_filler(new, j, n);
 	return (new);
-}
-
-int     main(void)
-{
-    int a;
-    int pr;
-    char *hey;
-
-    a = -2147483647 -1;
-    pr = ft_intcounter(a);
-    hey = ft_itoa(a);
-    printf("%d\n", pr);
-    printf("%s\n", hey);
-    
-    return (0);
 }
